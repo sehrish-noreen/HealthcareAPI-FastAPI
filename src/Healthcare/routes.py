@@ -12,9 +12,14 @@ async def root():
     return {"message": "welcome"}
 
 
-@api_router.get("/patients", response_model=Patient, status_code=status.HTTP_200_OK)
+@api_router.get("/patient/{patient_id}", status_code=status.HTTP_200_OK)
+async def get_onepatient_records(patient_id: int):
+    return {"message": f"{patient_id} patient data will be displayed here"}
+
+
+@api_router.get("/patients", status_code=status.HTTP_200_OK)
 async def get_patients_records():
-    pass
+    return {"message": "all patients data will be displayed here"}
 
 
 @api_router.post(
